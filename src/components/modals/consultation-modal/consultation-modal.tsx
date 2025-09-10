@@ -1,4 +1,5 @@
 import { cn } from "@/shared/utils/cn";
+import { useState } from "react";
 
 interface ModalProps {
   onClose?: () => void;
