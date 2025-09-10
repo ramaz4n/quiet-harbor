@@ -30,14 +30,12 @@ const config: Config = {
         xl: "52px",
       },
       colors: {
+        appYellow: "#d4af37",
         background: {
           DEFAULT: "var(--background)",
         },
         foreground: "var(--foreground)",
         "modal-bg": "rgba(0, 0, 0, 0.7)",
-        yellow: {
-          DEFAULT: "#d4af37",
-        },
       },
       fontSize: {
         "3.5xl": "2rem",

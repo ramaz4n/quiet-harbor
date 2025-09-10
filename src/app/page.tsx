@@ -1,6 +1,7 @@
 import Container from "@/components/container/container";
 import Header from "@/components/header/header";
 import Link from "next/link";
+import MainSlider from "@/components/main-slider/main-slider";
 
 export default function Home() {
   return (
@@ -33,13 +34,69 @@ export default function Home() {
 
       <section className="">
         <Container>
-          <div className="flex items-center justify-between mt-[80px]">
-            <h2 className="text-[60px]">О проекте</h2>
-            <p className="text-[40px] max-w-[790px] w-full">
+          <div className="flex items-center justify-between mt-[80px] flex-wrap gap-y-4 [@media(max-width:1115px)]:justify-center">
+            <h2 className="text-[60px] text-center">О проекте</h2>
+            <p className="text-[40px] max-w-[790px] w-full text-center">
               Мы создаем особую атмосферу, где вам будет по-настоящему комфортно
             </p>
           </div>
+
+          <div className="flex items-center justify-between mt-[100px] flex-wrap font-roboto gap-x-7 gap-y-12 [@media(max-width:1280px)]:justify-center">
+            <ul className="flex flex-col border-b-2 border-[#d4af37] max-w-[800px] w-full">
+              <li className="py-5 border-t-2 border-[#d4af37] w-full font-roboto text-3xl">
+                Развитая инфраструктура: рядом школа, детский сад, поликлиника
+              </li>
+              <li className="py-5 border-t-2 border-[#d4af37] w-full font-roboto text-3xl">
+                Удобная транспортная развязка, прямой и быстрый выезд из города
+              </li>
+              <li className="py-5 border-t-2 border-[#d4af37] w-full font-roboto text-3xl">
+                Охраняемый благоустроенный двор, обустроенная детская площадка
+              </li>
+              <li className="py-5 border-t-2 border-[#d4af37] w-full font-roboto text-3xl">
+                Просторный подземный паркинг
+              </li>
+              <li className="py-5 border-t-2 border-[#d4af37] w-full font-roboto text-3xl">
+                Терраса на крыше с видом на море и крепость Нарын-Кала
+              </li>
+              <li className="py-5 border-t-2 border-[#d4af37] w-full font-roboto text-3xl">
+                Городская набережная в пешей доступности
+              </li>
+              <li className="py-5 border-t-2 border-[#d4af37] w-full font-roboto text-3xl">
+                Беспроцентная рассрочка
+              </li>
+              <li className="py-5 border-t-2 border-[#d4af37] w-full font-roboto text-3xl">
+                Высокое качество строительства
+              </li>
+            </ul>
+
+            <div className="flex flex-col gap-[50px] items-center border-1 border-[#d4af37] max-w-[400px] rounded-[30px] w-full px-[150px] py-[80px]">
+              <div className="flex flex-col gap-4 items-center">
+                <p className="text-6xl">3</p>
+                <span className="text-xl">корпуса</span>
+              </div>
+
+              <div className="flex flex-col gap-4 items-center">
+                <p className="text-6xl">170</p>
+                <span className="text-xl">квартир</span>
+              </div>
+
+              <div className="flex flex-col gap-4 items-center">
+                <p className="text-6xl">8-9</p>
+                <span className="text-xl">этажей</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="font-roboto text-[40px] mt-[100px] text-center">
+            На территории более 7700 кв. м. мы возводим дом, где продумана
+            каждая деталь — от приватного озеленённого двора до современной
+            инфраструктуры, обеспечивающей комфорт каждому жителю.
+          </p>
         </Container>
+      </section>
+
+      <section className="mt-[100px]">
+        <MainSlider />
       </section>
     </div>
   );

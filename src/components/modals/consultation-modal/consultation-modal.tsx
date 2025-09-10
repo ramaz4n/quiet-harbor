@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { cn } from "@/shared/utils/cn";
 
 interface ModalProps {
