@@ -14,7 +14,7 @@ const roboto = Roboto({
   style: ["normal", "italic"],
   subsets: ["latin", "cyrillic"],
   variable: "--font-roboto",
-  weight: ["400", "700"],
+  weight: ["400", "700", "300", "500", "600"],
 });
 
 export const metadata: Metadata = {

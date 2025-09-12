@@ -1,7 +1,9 @@
 import Container from "@/components/container/container";
 import Header from "@/components/header/header";
 import Link from "next/link";
-import MainSlider from "@/components/main-slider/main-slider";
+import MainSlider from "@/components/sliders/main-slider/main-slider";
+import ApartmentsGallery from "@/components/apartments-gallery/apartments-gallery";
+import InstallmentCalculator from "@/components/installment-calculator/installment-calculator";
 
 export default function Home() {
   return (
@@ -98,6 +100,24 @@ export default function Home() {
       <section className="mt-[100px]">
         <MainSlider />
       </section>
+
+      <div className="bg-white">
+        <section className="mt-[80px] bg-[#0F2545] rounded-b-[30px] pb-[80px]">
+          <Container>
+            <div className="flex items-center justify-between pt-[80px] pb-[80px] font-sans">
+              <h3 className="text-6xl">Квартиры</h3>
+
+              <p className="text-[40px] max-w-[552px] text-center">
+                Атмосфера тепла и гармонии в каждом метре
+              </p>
+            </div>
+
+            <ApartmentsGallery />
+          </Container>
+        </section>
+
+        <InstallmentCalculator />
+      </div>
     </div>
   );
 }
