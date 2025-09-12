@@ -3,13 +3,200 @@ import Container from "@/components/container/container";
 import { useState } from "react";
 
 export default function InstallmentCalculator() {
+  const max_apartments_price = 10_000_000;
+  const max_initial_payment = 1_000_000;
+  const max_mortgage_term = 20;
+
   const [bet, setBet] = useState<number>(0);
+  const [apartmentPrice, setApartmentPrice] = useState<number>(0);
+  const [initialPayment, setInitialPayment] = useState<number>(0);
+  const [mortgageTerm, setMortgageTerm] = useState<number>(0);
+  const [percent, setPercent] = useState<number>(0);
+
+  const onApartmentPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+
+    if (!/^\d*$/.test(raw)) return;
+
+    const num = raw === "" ? 0 : Number(raw);
+
+    if (num > max_apartments_price) return;
+
+    setApartmentPrice(num);
+  };
+
+  const onInitialPaymentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+
+    if (!/^\d*$/.test(raw)) return;
+
+    const num = raw === "" ? 0 : Number(raw);
+
+    if (num > max_initial_payment) return;
+
+    setInitialPayment(num);
+  };
+
+  const onMortgageTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+
+    if (!/^\d*$/.test(raw)) return;
+
+    const num = raw === "" ? 0 : Number(raw);
+
+    if (num > max_mortgage_term) return;
+
+    setMortgageTerm(num);
+  };
+
   return (
     <section className="font-roboto py-[80px] text-black">
       <Container>
         <h3 className="text-6xl">Расчет ипотеки</h3>
         <div className="flex justify-between mt-[60px]">
-          <div></div>
+          <div className="flex flex-col gap-[40px] max-w-[600px] w-full">
+            <label
+              className="flex flex-col gap-[4px] cursor-pointer"
+              htmlFor="apartmentPrice"
+            >
+              <span className="text-[16px] font-light">Стоимость квартиры</span>
+              <div className="relative">
+                <input
+                  id="apartmentPrice"
+                  value={apartmentPrice}
+                  className="w-full h-[60px] py-[16px] px-[20px] border-1 border-[#162A4D] rounded-[11px] text-[24px]"
+                  type="text"
+                  onChange={(e) => onApartmentPriceChange(e)}
+                />
+
+                <input
+                  type="range"
+                  min={0}
+                  max={max_apartments_price}
+                  value={apartmentPrice}
+                  onChange={(e) => onApartmentPriceChange(e)}
+                  className="
+                      w-full max-w-[116px] h-[1px]
+                      bg-[#D4AF37] rounded-lg
+                      appearance-none cursor-pointer
+                      [&::-webkit-slider-thumb]:appearance-none
+                      [&::-webkit-slider-thumb]:w-4
+                      [&::-webkit-slider-thumb]:h-4
+                      [&::-webkit-slider-thumb]:rounded-full
+                      [&::-webkit-slider-thumb]:bg-[#D4AF37]
+                      [&::-webkit-slider-thumb]:cursor-pointer
+                      [&::-webkit-slider-thumb]:border-1
+                      [&::-moz-range-thumb]:w-4
+                      [&::-moz-range-thumb]:h-4
+                      [&::-moz-range-thumb]:rounded-full
+                      [&::-moz-range-thumb]:bg-[#D4AF37]
+                      [&::-moz-range-thumb]:cursor-pointer
+                      [&::-moz-range-thumb]:border-2
+                      absolute
+                      bottom-0
+                      left-8
+                    "
+                />
+              </div>
+            </label>
+
+            <label
+              className="flex flex-col gap-[4px] cursor-pointer"
+              htmlFor="initialPayment"
+            >
+              <span className="text-[16px] font-light">
+                Первоначальный взнос
+              </span>
+              <div className="relative">
+                <input
+                  id="initialPayment"
+                  value={initialPayment}
+                  className="w-full h-[60px] py-[16px] px-[20px] border-1 border-[#162A4D] rounded-[11px] text-[24px]"
+                  type="text"
+                  onChange={(e) => onInitialPaymentChange(e)}
+                />
+
+                <input
+                  type="range"
+                  min={0}
+                  max={max_initial_payment}
+                  value={initialPayment}
+                  onChange={(e) => onInitialPaymentChange(e)}
+                  className="
+                      w-full max-w-[116px] h-[1px]
+                      bg-[#D4AF37] rounded-lg
+                      appearance-none cursor-pointer
+                      [&::-webkit-slider-thumb]:appearance-none
+                      [&::-webkit-slider-thumb]:w-4
+                      [&::-webkit-slider-thumb]:h-4
+                      [&::-webkit-slider-thumb]:rounded-full
+                      [&::-webkit-slider-thumb]:bg-[#D4AF37]
+                      [&::-webkit-slider-thumb]:cursor-pointer
+                      [&::-webkit-slider-thumb]:border-1
+                      [&::-moz-range-thumb]:w-4
+                      [&::-moz-range-thumb]:h-4
+                      [&::-moz-range-thumb]:rounded-full
+                      [&::-moz-range-thumb]:bg-[#D4AF37]
+                      [&::-moz-range-thumb]:cursor-pointer
+                      [&::-moz-range-thumb]:border-2
+                      absolute
+                      bottom-0
+                      left-8
+                    "
+                />
+
+                <span className="absolute top-1/2 -translate-y-1/2 right-5 text-[22px] font-light">
+                  {percent} %
+                </span>
+              </div>
+            </label>
+
+            <label
+              className="flex flex-col gap-[4px] cursor-pointer"
+              htmlFor="mortgageTerm"
+            >
+              <span className="text-[16px] font-light">Стоимость квартиры</span>
+              <div className="relative">
+                <input
+                  id="mortgageTerm"
+                  value={mortgageTerm}
+                  className="w-full h-[60px] py-[16px] px-[20px] border-1 border-[#162A4D] rounded-[11px] text-[24px]"
+                  type="text"
+                  onChange={(e) => onMortgageTermChange(e)}
+                />
+
+                <input
+                  type="range"
+                  min={0}
+                  max={max_mortgage_term}
+                  value={mortgageTerm}
+                  onChange={(e) => onMortgageTermChange(e)}
+                  className="
+                      w-full max-w-[116px] h-[1px]
+                      bg-[#D4AF37] rounded-lg
+                      appearance-none cursor-pointer
+                      [&::-webkit-slider-thumb]:appearance-none
+                      [&::-webkit-slider-thumb]:w-4
+                      [&::-webkit-slider-thumb]:h-4
+                      [&::-webkit-slider-thumb]:rounded-full
+                      [&::-webkit-slider-thumb]:bg-[#D4AF37]
+                      [&::-webkit-slider-thumb]:cursor-pointer
+                      [&::-webkit-slider-thumb]:border-1
+                      [&::-moz-range-thumb]:w-4
+                      [&::-moz-range-thumb]:h-4
+                      [&::-moz-range-thumb]:rounded-full
+                      [&::-moz-range-thumb]:bg-[#D4AF37]
+                      [&::-moz-range-thumb]:cursor-pointer
+                      [&::-moz-range-thumb]:border-2
+                      absolute
+                      bottom-0
+                      left-8
+                    "
+                />
+              </div>
+            </label>
+          </div>
+
           <div className="flex flex-col items-center max-w-[600px] max-h-[412px] w-fit h-full pt-[40px] px-[72px] pb-[16] border-1 border-[#162A4D] rounded-[20px]">
             <p className="text-[36px] text-center">Предварительный расчет</p>
 
