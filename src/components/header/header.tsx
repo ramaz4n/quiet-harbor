@@ -4,14 +4,14 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <div className="w-full bg-background rounded-b-[30px] rounded-bl-[30px] fixed top-0 z-99">
+    <div className="w-full bg-background  md:rounded-b-[30px] fixed top-0 z-99">
       <Container>
-        <div className="h-[100px] flex items-center justify-between">
+        <div className="md:h-[60px] flex items-center justify-between h-[40px] lg:h-[100px]">
           <Link href="/" className="text-amber-50 text-5xl">
             Logo
           </Link>
 
-          <div className="flex items-center gap-[80px]">
+          <div className="md:flex items-center gap-[80px] hidden">
             <Link href="tel:+79994444449" className="text-[28px]">
               +7 (999) 444-44-49
             </Link>
@@ -40,6 +40,10 @@ export default function Header() {
               </Link>
             </div>
           </div>
+
+          <button className="md:hidden cursor-pointer">
+            <Image src="icons/burger.svg" alt="burger" width={16} height={14} />
+          </button>
         </div>
       </Container>
     </div>

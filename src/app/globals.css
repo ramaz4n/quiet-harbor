@@ -10,10 +10,63 @@
 }
 
 @theme inline {
+  /*colors*/
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-app-yellow: #d4af37;
+  --color-modal-bg:  rgba(0, 0, 0, 0.7);
+
+  /*fonts*/
   --font-sans: var(--font-pt-serif);
   --font-roboto: var(--font-roboto);
+
+  /*texts*/
+  --text-main-title: clamp(2rem, 5vw, 4rem);
+  --text-from-40: clamp(1rem, 3vw, 2.5rem);
+  --text-from-20: clamp(1rem, 2vw, 1.25rem);
+
+
+  --leading-main-title: 1.2;
+  --leading-from-40: 1;
+
+  /*animations*/
+  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
+  --animate-in: animate-in 0.25s ease-out;
+  --animate-out: animate-out 0.25s ease-out;
+  --animate-slide-up: animate-slide-up 0.25s ease-out;
+  --animate-slide-x: animate-slide-x 2s ease-out infinite;
+
+  /*breakpoints*/
+  --breakpoint-media-400: 400px;
+  --breakpoint-media-500: 500px;
+  --breakpoint-media-1115: 1115px;
+  --breakpoint-media-1400: 1400px;
+}
+
+/* Кейфреймы */
+@keyframes caret-blink {
+  0%, 70%, 100% { opacity: 1; }
+  20%, 50% { opacity: 0; }
+}
+
+@keyframes animate-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes animate-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes animate-slide-up {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0%); }
+}
+
+@keyframes animate-slide-x {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,4 +96,51 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance:textfield; /* Firefox */
+}
+
+/*sliders*/
+.swiper-slide {
+  height: auto !important;
+}
+
+.main-slider-pagination {
+  width: fit-content !important;
+  white-space: nowrap;
+  position: absolute;
+  overflow: hidden;
+  bottom: -35px !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #d4af37;
+    background-color: transparent;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: #d4af37;
+  }
+}
+
+.apartment-slider-pagination {
+  width: fit-content !important;
+  white-space: nowrap;
+  position: absolute;
+  overflow: hidden;
+  bottom: -35px !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #d4af37;
+    background-color: transparent;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: #d4af37;
+  }
 }

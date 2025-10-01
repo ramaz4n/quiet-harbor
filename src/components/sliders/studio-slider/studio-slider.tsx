@@ -1,74 +1,89 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
 
 export default function StudioSlider() {
   return (
     <div className="relative w-full">
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Pagination]}
         navigation={{
           nextEl: ".studio-slider-button-next",
           prevEl: ".studio-slider-button-prev",
         }}
+        pagination={{
+          clickable: true,
+          dynamicBullets: true,
+          el: ".apartment-slider-pagination",
+        }}
         spaceBetween={20}
         slidesPerView={1}
         loop={true}
-        className="w-full h-full max-w-[775px]"
+        className="w-full max-w-[900px] media-1400:max-w-[780px] border-1 border-app-yellow rounded-[30px] overflow-hidden max-h-[562px] sm:max-h-full"
       >
-        <SwiperSlide className="w-full h-full border-1 border-[#D4AF37] rounded-[30px] overflow-hidden bg-white">
+        <SwiperSlide className="w-full  bg-white">
           <Image
             width={780}
             height={540}
             alt="studio-image"
             src="/images/studio-slider/main.png"
-            className="object-cover object-center max-w-[780px] w-full max-h-[540px] h-full"
+            className="object-cover object-center w-full max-h-[245px] md:max-h-[540px] h-full"
           />
 
-          <div className="flex flex-col text-[#0F2545] py-[50px] px-[80px] font-roboto">
-            <p className="text-[50px]">Студия</p>
-            <span className="text-[20px] font-light mt-[10px]">1 корпус</span>
+          <div className="flex flex-col text-[#0F2545] py-[30px] md:py-[50px] px-[40px] md:px-[80px] font-roboto">
+            <p className="text-3xl sm:text-[50px]">Студия</p>
+            <span className="text-[16px] sm:text-[20px] font-light mt-[10px]">
+              1 корпус
+            </span>
 
-            <span className="text-[32px] mt-[10px]">22 кв.м.</span>
+            <span className=" text-[20px] sm:text-[32px] mt-[10px]">
+              22 кв.м.
+            </span>
 
-            <span className="text-[32px] mt-[10px]">
+            <span className="text-[20px] sm:text-[32px] mt-[10px]">
               от 120 900 руб. за кв.м.
             </span>
 
-            <button className="max-w-[400px] w-full h-[60px] text-[28px] font-light flex items-center justify-center border-1 border-[#D4AF37] rounded-[30px] mt-[30px] cursor-pointer hover:bg-[#D4AF37] duration-200">
+            <button className="max-w-[400px] w-full h-[60px] text-[20px] sm:text-[28px] font-light flex items-center justify-center border-1 border-app-yellow rounded-[30px] mt-[30px] cursor-pointer hover:bg-app-yellow duration-200">
               Забронировать
             </button>
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className="w-full h-full border-1 border-[#D4AF37] rounded-[30px] overflow-hidden bg-white">
+        <SwiperSlide className="w-full  bg-white">
           <Image
             width={780}
             height={540}
             alt="studio-image"
             src="/images/studio-slider/main.png"
-            className="object-cover object-center max-w-[780px] w-full max-h-[540px] h-full"
+            className="object-cover object-center w-full max-h-[245px] md:max-h-[540px] h-full"
           />
 
-          <div className="flex flex-col text-[#0F2545] py-[50px] px-[80px] font-roboto">
-            <p className="text-[50px]">Студия</p>
-            <span className="text-[20px] font-light mt-[10px]">1 корпус</span>
+          <div className="flex flex-col text-[#0F2545] py-[30px] md:py-[50px] px-[40px] md:px-[80px] font-roboto">
+            <p className="text-3xl sm:text-[50px]">Студия</p>
+            <span className="text-[16px] sm:text-[20px] font-light mt-[10px]">
+              1 корпус
+            </span>
 
-            <span className="text-[32px] mt-[10px]">22 кв.м.</span>
+            <span className=" text-[20px] sm:text-[32px] mt-[10px]">
+              22 кв.м.
+            </span>
 
-            <span className="text-[32px] mt-[10px]">
+            <span className="text-[20px] sm:text-[32px] mt-[10px]">
               от 120 900 руб. за кв.м.
             </span>
 
-            <button className="max-w-[400px] w-full h-[60px] text-[28px] font-light flex items-center justify-center border-1 border-[#D4AF37] rounded-[30px] mt-[30px] cursor-pointer hover:bg-[#D4AF37] duration-200">
+            <button className="max-w-[400px] w-full h-[60px] text-[20px] sm:text-[28px] font-light flex items-center justify-center border-1 border-app-yellow rounded-[30px] mt-[30px] cursor-pointer hover:bg-app-yellow duration-200">
               Забронировать
             </button>
           </div>
         </SwiperSlide>
       </Swiper>
 
-      <div className="studio-slider-button-prev absolute top-1/2 left-5 z-10 size-[80px] rounded-[50%] bg-transparent border-1 border-[#D4AF37] hover:bg-[#D4AF37] duration-150 cursor-pointer">
+      <div className="apartment-slider-pagination md:hidden"></div>
+
+      <div className="hidden md:block studio-slider-button-prev absolute top-1/2 left-5 z-10 size-[80px] rounded-[50%] bg-transparent border-1 border-app-yellow hover:bg-app-yellow duration-150 cursor-pointer">
         <svg
           width="80"
           height="80"
@@ -85,7 +100,7 @@ export default function StudioSlider() {
         </svg>
       </div>
 
-      <div className="studio-slider-button-next absolute top-1/2 right-5 z-10 size-[80px] rounded-[50%] bg-transparent border-1 border-[#D4AF37] hover:bg-[#D4AF37] duration-150 cursor-pointer">
+      <div className="hidden md:block studio-slider-button-next absolute top-1/2 right-5 z-10 size-[80px] rounded-[50%] bg-transparent border-1 border-app-yellow hover:bg-app-yellow duration-150 cursor-pointer">
         <svg
           width="80"
           height="80"

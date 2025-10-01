@@ -2,22 +2,27 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import Container from "@/components/container/container";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { MainSliderList } from "@/shared/constants/main-slider-list";
 
 export default function MainSlider() {
   return (
     <Container width={1460} className="relative">
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Pagination]}
         navigation={{
           nextEl: ".custom-swiper-button-next",
           prevEl: ".custom-swiper-button-prev",
         }}
+        pagination={{
+          clickable: true,
+          dynamicBullets: true,
+          el: ".main-slider-pagination",
+        }}
         spaceBetween={30}
         slidesPerView={1}
         loop={true}
-        className="w-[90%]"
+        className="w-[100%] md:w-[90%] rounded-[40px] border-1 border-app-yellow "
       >
         {MainSliderList?.map((item, index) => (
           <SwiperSlide key={index}>
@@ -26,13 +31,15 @@ export default function MainSlider() {
               height={800}
               alt={item.name}
               src={item.img}
-              className="w-full object-cover object-center border-1 border-[#D4AF37] rounded-[40px]"
+              className="w-full h-full object-cover object-center"
             />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <div className="custom-swiper-button-prev absolute top-1/2 left-0 z-10 size-[80px] rounded-[50%] bg-background border-1 border-[#D4AF37] hover:bg-[#D4AF37] duration-150 cursor-pointer">
+      <div className="main-slider-pagination md:hidden"></div>
+
+      <div className="hidden md:block custom-swiper-button-prev absolute top-1/2 left-0 z-10 size-[80px] rounded-[50%] bg-background border-1 border-app-yellow hover:bg-app-yellow duration-150 cursor-pointer">
         <svg
           width="80"
           height="80"
@@ -49,7 +56,7 @@ export default function MainSlider() {
         </svg>
       </div>
 
-      <div className="custom-swiper-button-next absolute top-1/2 right-0 z-10 size-[80px] rounded-[50%] bg-background border-1 border-[#D4AF37] hover:bg-[#D4AF37] duration-150 cursor-pointer">
+      <div className="hidden md:block custom-swiper-button-next absolute top-1/2 right-0 z-10 size-[80px] rounded-[50%] bg-background border-1 border-app-yellow hover:bg-app-yellow duration-150 cursor-pointer">
         <svg
           width="80"
           height="80"
