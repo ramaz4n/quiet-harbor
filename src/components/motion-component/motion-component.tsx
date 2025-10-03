@@ -18,7 +18,7 @@ export default function MotionComponent({
   const isInView = useInView(ref, { margin: "-100px", once: true });
 
   const variants = {
-    hidden: { opacity: 0, x: direction === "right" ? 100 : -100 },
+    hidden: { opacity: 0, x: direction === "right" ? 300 : -300 },
     visible: { opacity: 1, x: 0 },
   };
 

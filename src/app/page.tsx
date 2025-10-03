@@ -7,13 +7,14 @@ import InstallmentCalculator from "@/components/installment-calculator/installme
 
 import Image from "next/image";
 import MotionComponent from "@/components/motion-component/motion-component";
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
   return (
     <div className="w-full flex flex-col gap-0 bg-white">
       <Header />
 
-      <section className="rounded-b-[10px] sm:rounded-b-none bg-[url('/images/main.png')] aspect-[16/9] max-h-[278px] sm:max-h-[400px] h-dvh  md:max-h-[700px] bg-cover bg-center lg:max-h-[1300px]">
+      <section className="rounded-b-[10px] sm:rounded-b-none bg-[url('/images/main.png')] aspect-[16/9] max-h-[278px] sm:max-h-[400px] h-dvh  md:max-h-[700px] bg-cover bg-center lg:max-h-[900px] xl:max-h-[1000px] 2xl:max-h-[1300px]">
         <Container>
           <div className="pt-[90px] lg:pt-[170px] hidden sm:flex flex-col gap-6">
             <h1 className="text-main-title">ЖК “Тихая Гавань”</h1>
@@ -237,6 +238,8 @@ export default function Home() {
           </Container>
         </section>
       </div>
+
+      <Footer />
     </div>
   );
 }
