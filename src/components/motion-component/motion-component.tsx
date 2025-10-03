@@ -1,6 +1,6 @@
 "use client";
 
-import { PropsWithChildren, useRef } from "react";
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/shared/utils/cn";
 
@@ -17,10 +17,28 @@ export default function MotionComponent({
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-100px", once: true });
 
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  let moveDistance = windowWidth < 768 ? 100 : 300;
+
   const variants = {
-    hidden: { opacity: 0, x: direction === "right" ? 300 : -300 },
+    hidden: {
+      opacity: 0,
+      x: direction === "right" ? moveDistance : moveDistance - moveDistance * 2,
+    },
     visible: { opacity: 1, x: 0 },
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <motion.div
