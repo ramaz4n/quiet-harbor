@@ -10,6 +10,7 @@ import MotionComponent from "@/components/motion-component/motion-component";
 import Footer from "@/components/footer/footer";
 import { Toaster } from "sonner";
 import ConsultationForm from "@/components/consultation-form/consultation-form";
+import ConsultationModal from "@/components/modals/consultation-modal/consultation-modal";
 
 export default function Home() {
   return (
@@ -242,6 +243,8 @@ export default function Home() {
       </div>
 
       <Footer />
+
+      <ConsultationModal />
 
       <Toaster position="bottom-right" />
     </div>
