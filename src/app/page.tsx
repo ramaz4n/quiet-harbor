@@ -8,6 +8,8 @@ import InstallmentCalculator from "@/components/installment-calculator/installme
 import Image from "next/image";
 import MotionComponent from "@/components/motion-component/motion-component";
 import Footer from "@/components/footer/footer";
+import { Toaster } from "sonner";
+import ConsultationForm from "@/components/consultation-form/consultation-form";
 
 export default function Home() {
   return (
@@ -224,7 +226,7 @@ export default function Home() {
           <div className="h-[2px] bg-[#B4B4B4] w-full"></div>
 
           <Container>
-            <div className="flex items-center justify-between gap-6 py-[30px] md:py-[50px] lg:py-[100px]">
+            <div className="flex flex-col media-850:flex-row items-center justify-between gap-y-[40px] md:gap-[50px] py-[30px] md:py-[50px] lg:py-[100px]">
               <Image
                 width={700}
                 height={485}
@@ -233,13 +235,15 @@ export default function Home() {
                 className="max-w-[700px] max-h-[485px] size-full"
               />
 
-              <div className=""></div>
+              <ConsultationForm />
             </div>
           </Container>
         </section>
       </div>
 
       <Footer />
+
+      <Toaster position="bottom-right" />
     </div>
   );
 }
