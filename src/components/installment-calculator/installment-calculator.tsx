@@ -15,9 +15,8 @@ export default function InstallmentCalculator() {
     useState<number>(0); //процент первоначального взноса от общей стоимости
   const [paymentPerMonth, setPaymentPerMonth] = useState<number>(0); //платеж в месяц
 
-  const calcPercentOfInitialPayment = (raw: number): void => {
-    // raw - стоимость квартиры
-    const newPercentOfInitialPayment = (initialPayment / raw) * 100;
+  const calcPercentOfInitialPayment = (apartmentPrice: number): void => {
+    const newPercentOfInitialPayment = (initialPayment / apartmentPrice) * 100;
     setPercentOfInitialPayment(Number(newPercentOfInitialPayment.toFixed()));
   };
 
