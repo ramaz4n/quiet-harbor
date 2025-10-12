@@ -7,12 +7,26 @@ export default function InstallmentCalculator() {
   const max_initial_payment = 1_000_000;
   const max_mortgage_term = 20;
 
-  const [bet, setBet] = useState<number>(0);
-  const [apartmentPrice, setApartmentPrice] = useState<number>(0);
-  const [initialPayment, setInitialPayment] = useState<number>(0);
-  const [mortgageTerm, setMortgageTerm] = useState<number>(0);
-  const [percent, setPercent] = useState<number>(0);
+  const [bet, setBet] = useState<number>(0); //ставка
+  const [apartmentPrice, setApartmentPrice] = useState<number>(0); //стоимость квартиры
+  const [initialPayment, setInitialPayment] = useState<number>(0); //первоначальный взнос
+  const [mortgageTerm, setMortgageTerm] = useState<number>(0); //срок ипотеки
+  const [percentOfInitialPayment, setPercentOfInitialPayment] =
+    useState<number>(0); //процент первоначального взноса от общей стоимости
+  const [paymentPerMonth, setPaymentPerMonth] = useState<number>(0); //платеж в месяц
 
+  const calcPercentOfInitialPayment = (raw: number): void => {
+    // raw - стоимость квартиры
+    const newPercentOfInitialPayment = (initialPayment / raw) * 100;
+    setPercentOfInitialPayment(Number(newPercentOfInitialPayment.toFixed()));
+  };
+
+  const calcPaymentPerMonth = (mortgageTerm: number): void => {
+    const newPerMonth = (apartmentPrice - initialPayment) / (mortgageTerm * 12);
+    setPaymentPerMonth(Number(newPerMonth.toFixed()));
+  };
+
+  //стоимость квартиры
   const onApartmentPriceChange = (e: ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
 
@@ -23,8 +37,12 @@ export default function InstallmentCalculator() {
     if (num > max_apartments_price) return;
 
     setApartmentPrice(num);
+
+    calcPercentOfInitialPayment(Number(raw));
+    calcPaymentPerMonth(mortgageTerm);
   };
 
+  //первоначальный взнос
   const onInitialPaymentChange = (e: ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
 
@@ -35,8 +53,12 @@ export default function InstallmentCalculator() {
     if (num > max_initial_payment) return;
 
     setInitialPayment(num);
+
+    calcPercentOfInitialPayment(apartmentPrice);
+    calcPaymentPerMonth(mortgageTerm);
   };
 
+  //срок ипотеки
   const onMortgageTermChange = (e: ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
 
@@ -47,6 +69,8 @@ export default function InstallmentCalculator() {
     if (num > max_mortgage_term) return;
 
     setMortgageTerm(num);
+
+    calcPaymentPerMonth(Number(raw));
   };
 
   return (
@@ -148,7 +172,7 @@ export default function InstallmentCalculator() {
                 />
 
                 <span className="absolute top-1/2 -translate-y-1/2 right-5 text-[16px] md:text-[22px] font-light">
-                  {percent} %
+                  {percentOfInitialPayment} %
                 </span>
               </div>
             </label>
@@ -233,7 +257,7 @@ export default function InstallmentCalculator() {
               </p>
 
               <span className="text-[16px] md:text-[30px] font-medium whitespace-nowrap">
-                {"123123"} руб.
+                {paymentPerMonth} руб.
               </span>
             </div>
 

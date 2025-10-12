@@ -246,7 +246,7 @@ export default function Home() {
 
       <ConsultationModal />
 
-      <Toaster position="bottom-right" />
+      <Toaster position="top-right" />
     </div>
   );
 }
