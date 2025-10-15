@@ -14,7 +14,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-app-yellow: #d4af37;
-  --color-modal-bg:  rgba(0, 0, 0, 0.8);
+  --color-modal-bg:  rgba(0, 0, 0, 0.6);
 
   /*fonts*/
   --font-sans: var(--font-pt-serif);
@@ -98,6 +98,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance:textfield; /* Firefox */
 }
+
 
 /*sliders*/
 .swiper-slide {

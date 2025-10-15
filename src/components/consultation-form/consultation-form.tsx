@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { phoneNumber } from "@/shared/constants/phone-number";
 
 export default function ConsultationForm() {
   const [name, setName] = useState("");
@@ -120,6 +121,12 @@ export default function ConsultationForm() {
         return;
       }
     }
+
+    const message = `Здравствуйте, хочу узнать подробнее о квартирах в ЖК "Тихая Гавань". ${name}, ${phone} - мой номер для связи.`;
+    const encodedMessage = encodeURIComponent(message);
+    const link = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(link, "_blank");
   };
 
   return (

@@ -1,16 +1,14 @@
 "use client";
 
-import { cn } from "@/shared/utils/cn";
 import { useCallback, useRef, useState } from "react";
+import { useModal } from "@/shared/hooks/use-modal";
+import { phoneNumber } from "@/shared/constants/phone-number";
 
-interface ModalProps {
-  onClose?: () => void;
-  visible?: boolean;
-}
+export default function ConsultationModal() {
+  const { isOpen, closeModal } = useModal();
 
-export default function ConsultationModal({ onClose, visible }: ModalProps) {
-  const [isVisible, setIsVisible] = useState(visible ?? false);
   const [name, setName] = useState("");
+
   const [phone, setPhone] = useState("");
 
   const nameErrorRef = useRef<HTMLSpanElement>(null);
@@ -127,21 +125,20 @@ export default function ConsultationModal({ onClose, visible }: ModalProps) {
         return;
       }
     }
+
+    const message = `Здравствуйте, хочу узнать подробнее о квартирах в ЖК "Тихая Гавань". ${name}, ${phone} - мой номер для связи.`;
+    const encodedMessage = encodeURIComponent(message);
+    const link = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(link, "_blank");
   };
 
-  const onModalClose = () => {
-    setIsVisible(false);
-
-    if (onClose) onClose();
-  };
+  if (!isOpen) return null;
 
   return (
     <div
-      className={cn(
-        "size-full fixed z-[100] flex items-center justify-center bg-modal-bg duration-200",
-        { hidden: !isVisible },
-      )}
-      onClick={() => onModalClose()}
+      className="size-full fixed z-[100] flex items-center justify-center bg-modal-bg duration-200"
+      onClick={closeModal}
     >
       <div
         onClick={(e) => e.stopPropagation()}

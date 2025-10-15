@@ -1,6 +1,7 @@
 "use client";
 import Container from "@/components/container/container";
 import { ChangeEvent, useState } from "react";
+import ModalShowBtn from "@/shared/ui/modal-show-btn";
 
 export default function InstallmentCalculator() {
   const max_apartments_price = 10_000_000;
@@ -89,7 +90,7 @@ export default function InstallmentCalculator() {
                 <input
                   id="apartmentPrice"
                   value={apartmentPrice}
-                  className="w-full h-[35px] md:h-[60px] py-[16px] px-[20px] border-1 border-[#162A4D] rounded-[11px] text-[16px] md:text-[24px]"
+                  className="w-full h-[35px] md:h-[60px] py-[16px] px-[20px] border-1 border-background rounded-[11px] text-[16px] md:text-[24px]"
                   type="text"
                   onChange={(e) => onApartmentPriceChange(e)}
                 />
@@ -136,7 +137,7 @@ export default function InstallmentCalculator() {
                 <input
                   id="initialPayment"
                   value={initialPayment}
-                  className="w-full h-[35px] md:h-[60px] py-[16px] px-[20px] border-1 border-[#162A4D] rounded-[11px] text-[16px] md:text-[24px]"
+                  className="w-full h-[35px] md:h-[60px] py-[16px] px-[20px] border-1 border-background rounded-[11px] text-[16px] md:text-[24px]"
                   type="text"
                   onChange={(e) => onInitialPaymentChange(e)}
                 />
@@ -185,7 +186,7 @@ export default function InstallmentCalculator() {
                 <input
                   id="mortgageTerm"
                   value={mortgageTerm}
-                  className="w-full h-[35px] md:h-[60px] py-[16px] px-[20px] border-1 border-[#162A4D] rounded-[11px] text-[16px] md:text-[24px]"
+                  className="w-full h-[35px] md:h-[60px] py-[16px] px-[20px] border-1 border-background rounded-[11px] text-[16px] md:text-[24px]"
                   type="text"
                   onChange={(e) => onMortgageTermChange(e)}
                 />
@@ -222,7 +223,7 @@ export default function InstallmentCalculator() {
             </label>
           </div>
 
-          <div className="flex flex-col items-center max-w-[600px] max-h-[412px] w-fit h-full pt-[20px] md:pt-[40px] px-[20px] md:px-[72px] pb-[16] border-1 border-[#162A4D] rounded-[20px]">
+          <div className="flex flex-col items-center max-w-[600px] max-h-[412px] w-fit h-full pt-[20px] md:pt-[40px] px-[20px] md:px-[72px] pb-[16] border-1 border-backgroundrounded-[20px]">
             <p className="text-[16px] md:text-[36px] text-center leading-[100%]">
               Предварительный расчет
             </p>
@@ -260,9 +261,11 @@ export default function InstallmentCalculator() {
               </span>
             </div>
 
-            <button className="bg-background max-w-[420px] w-full min-h-[30px] md:min-h-[50px] px-2 mt-[20px] md:mt-[60px] cursor-pointer flex items-center justify-center text-white text-[14px] md:text-[20px] rounded-[12px] hover:bg-app-yellow duration-200">
-              Получить консультацию
-            </button>
+            <ModalShowBtn className="max-w-[420px] w-full">
+              <button className="bg-background max-w-[420px] w-full min-h-[30px] md:min-h-[50px] px-2 mt-[20px] md:mt-[60px] cursor-pointer flex items-center justify-center text-white text-[14px] md:text-[20px] rounded-[12px] hover:bg-app-yellow duration-200">
+                Получить консультацию
+              </button>
+            </ModalShowBtn>
             <span className="text-center mt-[10px] md:mt-[16px] text-[10px] md:text-[16px] max-w-[362px] leading-[100%]">
               Узнайте об индивидуальных условиях на консультации
             </span>
