@@ -190,7 +190,7 @@ export default function ConsultationModal() {
           </div>
 
           <button
-            className="w-full text-[16px] md:text-[20px] lg:text-[26px] h-[50px] md:h-[60px] rounded-[20px] text-center text-black bg-app-yellow cursor-pointer border-2 border-app-yellow hover:bg-background hover:text-white duration-200"
+            className="w-full text-[16px] md:text-[20px] lg:text-[26px] h-[50px] md:h-[60px] rounded-[20px] text-center text-black bg-app-yellow cursor-pointer border-2 border-app-yellow hover:bg-transparent hover:text-white duration-200"
             type="submit"
             onClick={(e) => handleSubmit(e)}
           >

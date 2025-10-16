@@ -33,7 +33,7 @@ export default function Home() {
                   Позвонить
                 </Link>
 
-                <ModalShowBtn>
+                <ModalShowBtn className="max-w-[140px] md:max-w-[180px] w-full">
                   <button className="text-from-20 max-w-[140px] md:max-w-[180px] w-full h-[40px] md:h-[60px] px-2 whitespace-nowrap cursor-pointer flex items-center justify-center bg-transparent border-2 border-app-yellow rounded-[85px] hover:bg-app-yellow transition duration-200">
                     Оставить номер
                   </button>
@@ -56,12 +56,11 @@ export default function Home() {
                   Позвонить
                 </Link>
 
-                <Link
-                  href="tel:+79994444449"
-                  className="text-[14px] max-w-[120px] w-full h-[40px] px-2 flex items-center justify-center whitespace-nowrap bg-transparent border-2 border-app-yellow rounded-[85px]"
-                >
-                  Оставить номер
-                </Link>
+                <ModalShowBtn className="max-w-[120px] w-full">
+                  <button className="text-[14px] max-w-[120px] w-full h-[40px] cursor-pointer px-2 flex items-center justify-center whitespace-nowrap bg-transparent border-2 border-app-yellow rounded-[85px]">
+                    Оставить номер
+                  </button>
+                </ModalShowBtn>
               </div>
             </div>
           </Container>
